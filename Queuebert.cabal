@@ -15,21 +15,29 @@ maintainer:          drew.e.fenwick+github@gmail.com
 -- category:
 extra-source-files:  CHANGELOG.md
 
-library
-  exposed-modules:     MyLib
-  -- other-modules:
-  -- other-extensions:
-  build-depends:       base ^>=4.12.0.0
-  hs-source-dirs:      lib
-  default-language:    Haskell2010
+-- library
+--   exposed-modules:     MyLib
+--   -- other-modules:
+--   -- other-extensions:
+--   build-depends:       base ^>=4.12.0.0
+--   hs-source-dirs:      lib
+--   default-language:    Haskell2010
 
 executable Queuebert
   main-is:             Main.hs
   -- other-modules:
   -- other-extensions:
-  build-depends:       base ^>=4.12.0.0, Queuebert
+  build-depends:       base ^>=4.12.0.0,
+                       servant-client ^>= 0.16.0,
+                       servant ^>= 0.16.2,
+                       telegram-types ^>= 0.4,
+                       telegram-raw-api ^>= 0.3,
+                       text ^>= 1.2.3,
+                       monads-tf ^>= 0.1.0 ,
+                       transformers ^>= 0.5.6,
   hs-source-dirs:      app
   default-language:    Haskell2010
+  ghc-options: -Wall
 
 test-suite Queuebert-test
   default-language:    Haskell2010
