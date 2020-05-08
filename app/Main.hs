@@ -1,10 +1,10 @@
 module Main where
 
-import Control.Concurrent
-import Control.Monad.Reader
-import Env
-import Listener
-import Poster
+import           Control.Concurrent
+import           Control.Monad.Reader
+import           Env
+import           Listener
+import           Poster
 
 main :: IO ()
 main = runApp app

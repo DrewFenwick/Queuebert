@@ -2,19 +2,22 @@
 {-# LANGUAGE TypeFamilies #-}
 
 module Env
-  ( Env (..),
-    MonadReads,
-    App,
-    runApp,
+  ( Env(..)
+  , MonadReads
+  , App
+  , runApp
   )
 where
 
-import Control.Monad.Reader
-import Data.Text (pack)
-import Network.HTTP.Client.Conduit (newManager)
-import Servant.Client (ClientEnv, mkClientEnv, parseBaseUrl)
-import System.Environment (getEnv)
-import Web.Telegram.API (Token (..))
+import           Control.Monad.Reader
+import           Data.Text                      ( pack )
+import           Network.HTTP.Client.Conduit    ( newManager )
+import           Servant.Client                 ( ClientEnv
+                                                , mkClientEnv
+                                                , parseBaseUrl
+                                                )
+import           System.Environment             ( getEnv )
+import           Web.Telegram.API               ( Token(..) )
 
 data Env = Env {token :: Token, clientEnv :: ClientEnv}
 
@@ -29,8 +32,8 @@ runApp app = do
 
 mkEnv :: IO Env
 mkEnv = do
-  tok <- Token . pack <$> getEnv "QueuebertToken"
+  tok     <- Token . pack <$> getEnv "QueuebertToken"
   manager <- newManager
   baseUrl <- parseBaseUrl "https://api.telegram.org"
   let env = mkClientEnv manager baseUrl
-  pure Env {token = tok, clientEnv = env}
+  pure Env { token = tok, clientEnv = env }
