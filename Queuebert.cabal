@@ -25,9 +25,10 @@ extra-source-files:  CHANGELOG.md
 
 executable Queuebert
   main-is:             Main.hs
-  -- other-modules:
+  other-modules:       API, Env, Listener, Poster
   -- other-extensions:
   build-depends:       base ^>=4.12.0.0,
+                       http-conduit,
                        servant-client ^>= 0.16.0,
                        servant ^>= 0.16.2,
                        telegram-types ^>= 0.4,
